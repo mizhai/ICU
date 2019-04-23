@@ -9,6 +9,15 @@ class Wendapage extends StatefulWidget {
 }
 
 class WendapageState extends State<Wendapage> {
+
+
+@override
+  void initState() {
+    super.initState();
+
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,4 +27,19 @@ class WendapageState extends State<Wendapage> {
       body: Text('data'),
     );
   }
+
+
+
+
+
+
+
+
+  
 }
+
+
+
+
+
+

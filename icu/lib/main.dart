@@ -16,7 +16,7 @@ class MyApp extends StatefulWidget {
 
 
 class MyAppState extends State<MyApp> {
-  Color _themeColor = Colours.app_main;
+  Color _themeColor = DefaultColours.app_main;
 
 
 
@@ -46,6 +46,7 @@ class MyAppState extends State<MyApp> {
 
   _init() {
     Options options = DioUtil.getDefOptions();
+    DioUtil.openDebug();
     options.baseUrl = Constant.SERVER_ADDRESS;
     HttpConfig config = new HttpConfig(options: options);
     DioUtil().setConfig(config);

@@ -118,10 +118,10 @@ class DioUtil {
   String _statusKey = "status";
 
   /// BaseResp [int code]字段 key, 默认：errorCode.
-  String _codeKey = "errorCode";
+  String _codeKey = "code";
 
   /// BaseResp [String msg]字段 key, 默认：errorMsg.
-  String _msgKey = "errorMsg";
+  String _msgKey = "msg";
 
   /// BaseResp [T data]字段 key, 默认：data.
   String _dataKey = "data";
@@ -212,6 +212,7 @@ class DioUtil {
     if (response.statusCode == HttpStatus.ok ||
         response.statusCode == HttpStatus.created) {
       try {
+        print('-----------------------------------ssssss----------------------');
         if (response.data is Map) {
           _status = (response.data[_statusKey] is int)
               ? response.data[_statusKey].toString()
@@ -221,6 +222,7 @@ class DioUtil {
               : response.data[_codeKey];
           _msg = response.data[_msgKey];
           _data = response.data[_dataKey];
+       
         } else {
           Map<String, dynamic> _dataMap = _decodeData(response);
           _status = (_dataMap[_statusKey] is int)
@@ -234,6 +236,7 @@ class DioUtil {
         }
         return new BaseResp(_status, _code, _msg, _data);
       } catch (e) {
+        print(response.data[_dataKey]['data']);
         return new Future.error(new DioError(
           response: response,
           message: "data parsing exception...",
@@ -297,6 +300,7 @@ class DioUtil {
         ));
       }
     }
+    print('dsdsdsdsdsd');
     return new Future.error(new DioError(
       response: response,
       message: "statusCode: $response.statusCode, service error",
@@ -369,7 +373,8 @@ class DioUtil {
           "\n[request   ]:   " +
           _getOptionsStr(response.request));
       _printDataStr("reqdata ", response.request.data);
-      _printDataStr("response", response.data);
+      //_printDataStr("response", response.data);
+      print(response.data);
     } catch (ex) {
       print("Http Log" + " error......");
     }
