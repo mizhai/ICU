@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:icu/data(网络数据层)/repository(接口请求&数据解析)/icu_repository.dart';
-import 'package:icu/data(网络数据层)/protocol(请求与返回实体类)/protocolModel.dart';
-import 'package:icu/ui(界面pageS,log,widgets)/widgets/pozhuhaolist_item.dart';
+import 'package:icu/data/repository/icu_repository.dart';
+import 'package:icu/data/protocol/protocolModel.dart';
+import 'package:icu/ui/pages/pozhuhao/V/pozhuhaolist_item.dart';
 
 class Pozhuhaopage extends StatefulWidget {
   @override
@@ -29,6 +29,7 @@ class PozhuhaopageState extends State<Pozhuhaopage> {
     _configData();
     _controller.addListener((){
       if (_controller.position.pixels == _controller.position.maxScrollExtent) {
+        print('开始上啦刷新了');
         _onGetMoreData();
       }
     });
@@ -92,6 +93,7 @@ class PozhuhaopageState extends State<Pozhuhaopage> {
     params["member_id"] = "1";
     params['page'] = _page.toString();
     repository.getPozhuhaoList(params).then((list){
+      print(list);
       setState(() {
         if (_page == 1) {
           pozhuhaolist.clear();

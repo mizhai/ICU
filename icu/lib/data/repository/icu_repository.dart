@@ -1,7 +1,9 @@
-import 'package:icu/data(网络数据层)/net/dio_util.dart';
-import 'package:icu/data(网络数据层)/protocol(请求与返回实体类)/protocolModel.dart';
-import 'package:icu/data(网络数据层)/api(url字段)/apis.dart';
-import 'package:icu/common(常用类)/common_index.dart';
+import 'package:icu/data/net/dio_util.dart';
+import 'package:icu/data/protocol/protocolModel.dart';
+import 'package:icu/data/api/apis.dart';
+import 'package:icu/common/common_index.dart';
+import 'package:icu/ui/pages/pozhuhao/M/catmodel.dart';
+import 'package:icu/data/net/network.dart';
 import 'dart:async';
 class ICURepository {
 
@@ -12,28 +14,35 @@ class ICURepository {
     List<PozhuhaolistModel> pozhuhaolist = new List();
     print(baseResp.code);
     print('-----------------------------------ddddddd----------------------');
-
-    if (baseResp == null) {
-      print('失败了');
-    }else if (baseResp.code != Constant.STATUS_SUCCESS) {
+     if (baseResp.code != Constant.STATUS_SUCCESS) {
       print('失败了');
       return new Future.error(baseResp.msg);
     }
-
-  
     if (baseResp.data != null) {
-     
       List data =  baseResp.data['data'];
       pozhuhaolist = data.map((value){
         return PozhuhaolistModel.fromJson(value);
-
       }).toList();
     }
-
-    print('-----------------------------------大大大大帅哒d----------------------');
-    print(pozhuhaolist);
     return pozhuhaolist;
   }
+
+  getpozhuhaoCat(Map<String, String> parame, Function callBlock) async {
+    TTDio.get(ICUApi.PozhuhaoList , (data){
+      catmodel model = catmodel.fromJson(data);
+      if (callBlock != null) {
+        callBlock(model, true);
+      }
+    },params:ICUApi.postparameterSpling(parame),errorCallBack: (errorMsg) {
+        callBlock(errorMsg, false);
+    });
+  }
+
+
+  
+
+
+  
 
 
 

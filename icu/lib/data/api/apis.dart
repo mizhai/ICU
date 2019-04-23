@@ -6,6 +6,8 @@ static const String SendPlayLogURL = "plays/add";
 
 static const String Pozhuhaoindex = "mizhaix/index";
 
+static const String PozhuhaoList  = "mizhaix/mlist";
+
 
   static String getPath({String path: '', int page, String resType: 'json'}) {
     StringBuffer sb = new StringBuffer(path);
@@ -20,11 +22,13 @@ static const String Pozhuhaoindex = "mizhaix/index";
 
 
   static String getparameterSplicing(String path, Map parame) {
-    var par;
-    parame.forEach((k , v) {
+    String par = '';
+    if (parame != null) {
+      parame.forEach((k , v) {
          par = k + '=' + v + "&";
-    });
-    path = path + '?' + par + 'device_id=123213232&' + 'base=0';
+      });
+    }
+    path = path + '?'+ par + 'device_id=123213232&' + 'base=0' ;
     print(par);
     return path;
   }

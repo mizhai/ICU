@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'package:icu/ui(界面pageS,log,widgets)/pages/home/home.dart';
-import 'package:icu/ui(界面pageS,log,widgets)/pages/pozhuhao/pozhuhao.dart';
-import 'package:icu/ui(界面pageS,log,widgets)/pages/wenda/wenda.dart';
-import 'package:icu/ui(界面pageS,log,widgets)/pages/my/my.dart';
+import 'package:icu/ui/pages/home/home.dart';
+import 'package:icu/ui/pages/pozhuhao/C/pozhuhao.dart';
+import 'package:icu/ui/pages/wenda/wenda.dart';
+import 'package:icu/ui/pages/my/my.dart';
 
 
 

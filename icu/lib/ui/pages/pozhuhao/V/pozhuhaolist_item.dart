@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:icu/data(网络数据层)/protocol(请求与返回实体类)/protocolModel.dart';
+import 'package:icu/data/protocol/protocolModel.dart';
 import 'package:icu/res/res_index.dart';
-import 'package:icu/common(常用类)/common_index.dart';
-import 'widgets.dart';
+import 'package:icu/common/common_index.dart';
+import 'package:icu/ui/widgets/widgets.dart';
+import 'package:icu/ui/pages/pozhuhao/C/pozhuhaoList.dart';
 
 class PozhuhaolistItem extends StatelessWidget {
   
@@ -16,6 +17,7 @@ class PozhuhaolistItem extends StatelessWidget {
 
       onTap: () {
         print('点击一下');
+          Navigator.push(context, new MaterialPageRoute(builder: (context) => new PozhuhaoListPage()));
       },
 
       child: Container(
@@ -66,8 +68,8 @@ class _HeaderitemState extends State<Headeritem> {
                       height: 31,
                       color: Colors.red,
                       child: CachedNetworkImage(
-                        width: 31,
-                        height: 31,
+                        // width: 31,
+                        // height: 31,
                         fit: BoxFit.fill,
                         imageUrl: widget.model.thumb,
                         placeholder: (context, url) => new ProgressView(),
@@ -116,11 +118,8 @@ class _HeaderitemState extends State<Headeritem> {
                     )
                   ),
 
-              
-
 
                   FlatButton(
-
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[

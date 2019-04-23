@@ -212,7 +212,6 @@ class DioUtil {
     if (response.statusCode == HttpStatus.ok ||
         response.statusCode == HttpStatus.created) {
       try {
-        print('-----------------------------------ssssss----------------------');
         if (response.data is Map) {
           _status = (response.data[_statusKey] is int)
               ? response.data[_statusKey].toString()
@@ -259,6 +258,7 @@ class DioUtil {
   /// <BaseRespR<T> 返回 status code msg data  Response.
   Future<BaseRespR<T>> requestR<T>(String method, String path,
       {data, Options options, CancelToken cancelToken}) async {
+        print(path);
     Response response = await _dio.request(path,
         data: data,
         options: _checkOptions(method, options),
@@ -373,7 +373,7 @@ class DioUtil {
           "\n[request   ]:   " +
           _getOptionsStr(response.request));
       _printDataStr("reqdata ", response.request.data);
-      //_printDataStr("response", response.data);
+      _printDataStr("response", response.data);
       print(response.data);
     } catch (ex) {
       print("Http Log" + " error......");

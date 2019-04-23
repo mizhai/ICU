@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:icu/data(网络数据层)/net/dio_util.dart';
-import 'package:icu/common(常用类)/common_index.dart';
-import 'package:icu/ui(界面pageS,log,widgets)/pages/tabbars.dart';
+import 'package:icu/data/net/dio_util.dart';
+import 'package:icu/common/common_index.dart';
+import 'package:icu/ui/pages/tabbars.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -16,7 +16,7 @@ class MyApp extends StatefulWidget {
 
 
 class MyAppState extends State<MyApp> {
-  Color _themeColor = DefaultColours.app_main;
+  Color _themeColor = Colors.white;
 
 
 
@@ -31,10 +31,8 @@ class MyAppState extends State<MyApp> {
 
     return new MaterialApp(
       home: Mytabbar(),
-      theme: ThemeData.light().copyWith(
+      theme: ThemeData(
         primaryColor: _themeColor,
-        accentColor: _themeColor,
-        indicatorColor: _themeColor,
       ),
 
     );

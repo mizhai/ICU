@@ -5,4 +5,5 @@ class Constant {
   static const String SERVER_ADDRESS = WAN_ANDROID;
   
   static const String WAN_ANDROID = "http://local.pozhu.com/V1/";
+
 }
